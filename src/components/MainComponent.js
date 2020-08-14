@@ -7,10 +7,10 @@ import { DISHES } from '../shared/Dishes';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
-import  { Header } from './HeaderComponent';
+import  Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class Main extends Component {
     constructor(props) {
@@ -50,13 +50,13 @@ class Main extends Component {
             <div>
                <Header />
                <div>
-                    <switch>
+                    <Switch>
                         <Route path="/home" component={HomePage} />
                         <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
                         <Route path='/menu/:dishId' component={DishWithId} />
                         <Route exact path="/Contactus" component={Contact} />
                         <Route exact path="/Aboutus" component={AboutLeaders}/>
-                    </switch>
+                    </Switch>
                </div>
                <Footer />
             </div>

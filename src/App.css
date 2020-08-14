@@ -31,3 +31,16 @@ address{
 .navbar-dark {
     background-color: #512DA8;
 }
+
+
+.fade {
+    opacity: 1 !important ;
+    transition: opacity .15s linear!important ;
+    transition-property: opacity !important ;
+    transition-duration: 0.15s!important ;
+    transition-timing-function: linear!important ;
+    transition-delay: 0s !important ;
+}
+.modal-content{
+    margin-top: 40px !important;
+}
