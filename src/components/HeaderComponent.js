@@ -80,7 +80,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </Jumbotron>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="fade modal-content">
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="show  modal-content">
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
