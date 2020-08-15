@@ -1,10 +1,12 @@
-import { createStore, combineReducers } from "redux"
+import { createStore, combineReducers,applyMiddleware,compose } from "redux"
 import { Dishes } from './dishes';
 import { Comments } from './comments';
 import { Promotions } from './promotions';
 import { Leaders } from './leaders';
+import thunk from "redux-thunk";
 
 export const configureStore=()=>{
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store=createStore(
       combineReducers({
         dishes:Dishes,
@@ -12,7 +14,10 @@ export const configureStore=()=>{
         promotions:Promotions,
         leaders:Leaders
       }),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    );
+        composeEnhancers(
+                applyMiddleware(thunk)
+        )
+        
+    )
     return store;
 }
