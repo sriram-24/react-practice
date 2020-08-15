@@ -32,6 +32,7 @@ function RenderComments({ comments, addComment, dishId }) {
                 <div>{comment.comment}</div>
                 <div>
                     {'-- ' + comment.author + ', ' + comment.date}
+                    
                 </div>
             </div>
         );
@@ -111,7 +112,7 @@ export class CommentForm extends Component {
     handleSubmit(values) {
         this.toggleModal();
         console.log('comment:', values);
-        alert('comment:' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment)
     }
 
     render() {
