@@ -1,33 +1,18 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { render } from '@testing-library/react';
-
-const RenderLeader=({leader})=>{
-    return(
-        <div key={leader.id} className="col-12 mt-5">
-            <Media tag="li">
-                <Media left middle>
-                    <Media object src={leader.image} alt={leader.name} />
-                </Media>
-                <Media body className="ml-5">
-                    <Media heading>{leader.name}</Media>
-                    <Media heading><small>{leader.designation}</small></Media>
-                    <p>{leader.description}</p>
-                </Media>
-            </Media>
-        </div>
-    );
-}
+import { baseUrl } from '../shared/baseUrl';
+import { Fade, Stagger } from 'react-animation-components';
 
 function About(props) {
 
     const leaders = props.leaders.map((leader) => {
         return (
-            <RenderLeader leader={leader} key={leader.id}/>
+            <RenderLeader key={leader.id} leader={leader} />
         );
     });
-    
+
+
     return (
         <div className="container">
             <div className="row">
@@ -92,4 +77,26 @@ function About(props) {
     );
 }
 
-export default About;    
+export default About;
+
+
+function RenderLeader({ leader }) {
+    return (
+        <div key={leader.id} className="col-12 mt-5">
+            <Stagger in>
+                <Fade in>
+                    <Media tag="li">
+                        <Media left middle>
+                            <Media object src={baseUrl + leader.image} alt={leader.name} />
+                        </Media>
+                        <Media body className="ml-5">
+                            <Media heading>{leader.name}</Media>
+                            <Media heading><small>{leader.designation}</small></Media>
+                            <p>{leader.description}</p>
+                        </Media>
+                    </Media>
+                </Fade>
+            </Stagger>
+        </div>
+    );
+}
